@@ -17,7 +17,7 @@ public class ZigZagTraversal {
                 Node front = q.poll();
 
                 int index = l2r ? i : (n-i-1);
-                row.set(index , front.data);
+                row.set(index ,front.data);
                 if(front.left != null) q.add(front.left);
                 if(front.right != null) q.add(front.right);
             }

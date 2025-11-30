@@ -1,7 +1,9 @@
 package Arrays;
 
+
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class MajorityElement {
     public static int majorityBrute(int[] arr, int n){
@@ -25,7 +27,7 @@ public class MajorityElement {
 
         // Count frequency of each element
         for (int num : arr) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+            map.put(num, map.getOrDefault(num,0) + 1);
         }
 
         // Check if any element has count > n/2
@@ -62,7 +64,7 @@ public class MajorityElement {
         }
     }
     public static void main(String[] args) {
-        int[] arr = {2,2,3,3,1,2,2};
+        int[] arr = {2,2,3,2,1,2,2};
         int n = arr.length;
 //        int res = majorityBrute(arr,n);
         int res = MajorityElement(arr,n);
