@@ -5,28 +5,33 @@ import java.util.Arrays;
 import java.util.List;
 
 public class permutation {
+    public static void solve(int[] nums,List<Integer> ds, boolean[] freq,List<List<Integer>> res ){
+        if(ds.size()==nums.length){
+            res.add(new ArrayList<>(ds));
+            return;
+        }
+        for(int i=0; i<nums.length; i++){
+            if(!freq[i]){
+                freq[i]=true;
+                ds.add(nums[i]);
+                solve(nums,ds,freq,res);
+                ds.remove(ds.size()-1);
+                freq[i]=false;
+            }
+        }
+    }
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        boolean[] freq = new boolean[nums.length];
+        solve(nums,list,freq,res);
+        return res;
+    }
     public static void main(String[] args) {
         int[] arr = {1,2,3};
-        List<Integer> list = new ArrayList<>();
-        boolean[] used = new boolean[arr.length];
-        Arrays.fill(used,false);
-        solve(arr,list,used);
-    }
-    public static void solve(int[]arr, List<Integer> list, boolean[] used){
-        if(list.size()== arr.length){
-            System.out.println(list);
-            return ;
-        }
+        List<List<Integer>> ans = permute(arr);
+        System.out.println(ans);
 
-        for(int i=0; i<arr.length; i++){
-            if(used[i]==true){
-                continue;
-            }
-            list.add(arr[i]);
-            used[i] = true;
-            solve(arr,list,used);
-            list.remove(list.size()-1);
-            used[i] = false;
-        }
+
     }
 }
